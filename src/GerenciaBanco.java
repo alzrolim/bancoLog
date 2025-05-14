@@ -1,11 +1,3 @@
-package src;
-/*public class Main {
-    
-    public static void main(String[] args) {
-        // Inicia o sistema de gerenciamento bancário
-        GerenciaBanco.main(args);
-    }
-*/
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -156,14 +148,17 @@ public class GerenciaBanco {
      */
     public static void registrarLog(ContaBancaria conta, String tipoOperacao, String detalhes) {
         try {
-            // Criar diretório de logs se não existir
-            File diretorio = new File("logs");
+            // Obter o caminho do diretório onde a aplicação está sendo executada
+            String diretorioAtual = System.getProperty("user.dir");
+            
+            // Criar diretório de logs no diretório do projeto
+            File diretorio = new File(diretorioAtual + File.separator + "logs");
             if (!diretorio.exists()) {
                 diretorio.mkdir();
             }
             
-            // Nome do arquivo baseado no CPF do cliente
-            String nomeArquivo = "logs/conta_" + conta.getCpf() + ".log";
+            // Nome do arquivo baseado no CPF do cliente (usando caminho absoluto)
+            String nomeArquivo = diretorio.getAbsolutePath() + File.separator + "conta_" + conta.getCpf() + ".log";
             
             // Data e hora atual formatada
             SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -177,6 +172,8 @@ public class GerenciaBanco {
             escritor.write(conteudoLog);
             escritor.close();
             
+            System.out.println("Log salvo em: " + nomeArquivo);
+            
         } catch (IOException e) {
             System.out.println("Erro ao registrar log: " + e.getMessage());
         }
@@ -188,7 +185,9 @@ public class GerenciaBanco {
      */
     public static void exibirHistoricoOperacoes(ContaBancaria conta) {
         try {
-            File arquivo = new File("logs/conta_" + conta.getCpf() + ".log");
+            // Obter o caminho do diretório onde a aplicação está sendo executada
+            String diretorioAtual = System.getProperty("user.dir");
+            File arquivo = new File(diretorioAtual + File.separator + "logs" + File.separator + "conta_" + conta.getCpf() + ".log");
             
             if (!arquivo.exists()) {
                 System.out.println("Não há histórico de operações disponível.");
