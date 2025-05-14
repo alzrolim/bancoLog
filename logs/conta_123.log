@@ -1,0 +1,6 @@
+[13/05/2025 23:26:59] - Criação de conta - Conta criada com sucesso para teste ok
+[13/05/2025 23:27:02] - Consulta de Saldo - Saldo consultado: R$ 0,00
+[13/05/2025 23:27:05] - Depósito - Valor: R$ 1000,00 | Saldo anterior: R$ 0,00 | Novo saldo: R$ 1000,00
+[13/05/2025 23:27:09] - Saque - Valor: R$ 10,00 | Saldo anterior: R$ 1000,00 | Novo saldo: R$ 990,00
+[13/05/2025 23:27:12] - Consulta de Dados - Dados da conta consultados
+[13/05/2025 23:27:19] - Encerramento - Sessão encerrada pelo usuário
